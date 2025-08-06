@@ -15,14 +15,14 @@
 
 ## Introduction
 
-Martian World Models introduces a comprehensive solution for synthesizing realistic Martian landscape videos, addressing the critical need for mission rehearsal and robotic simulation in planetary exploration.
+Martian World Model introduces a comprehensive solution for synthesizing realistic Martian landscape videos, addressing the critical need for mission rehearsal and robotic simulation in planetary exploration.
 
 
 
 
 ## Installation
 
-To set up the environment for Martian World Models, follow these steps:
+To set up the environment for Martian World Model, follow these steps:
 
 ```bash
 # Create a new conda environment
