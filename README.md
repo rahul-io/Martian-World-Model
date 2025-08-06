@@ -1,4 +1,4 @@
-<h2 align="center"><span style="color: #ff6b35; font-weight: bold; font-size: 1.8em;"> Martian World Models</span><br>
+<h2 align="center"><span style="color: #ff6b35; font-weight: bold; font-size: 1.8em;"> Martian World Model</span><br>
   <span style="font-size: 1.6em; color: #666;">Controllable Video Synthesis with Physically Accurate 3D Reconstructions</span>
 
 <a href="https://arxiv.org/abs/2507.07978" target="_blank">
