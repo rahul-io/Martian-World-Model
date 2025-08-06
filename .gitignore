@@ -1,0 +1,14 @@
+*.bin
+*.ply
+*.json
+*.pt
+*.safetensors
+__pycache__
+*.pyc
+*.pkl
+*.model.pt
+*.pth
+*.mat
+*.log
+*.ckpt
+*.csv
