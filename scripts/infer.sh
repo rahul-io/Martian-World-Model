@@ -1,12 +1,12 @@
 #!/bin/bash
 
 # Change the absolute path first!
-DATA_ROOT_DIR="<absolute path>"
+DATA_ROOT_DIR="/workspace/Martian-World-Model"
 DATASETS=(assets)
 MODEL_NAME="assets"
 temp_var="depth"
 
-GPU=$1
+GPU=${1:-0}
 TRAJ="zoom_in_out"
 SCENES=(demo)
 

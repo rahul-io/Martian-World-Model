@@ -31,11 +31,12 @@ RUN wget -q https://cmake.org/files/v3.14/cmake-3.14.0-Linux-x86_64.sh -O /tmp/c
 RUN python -m pip install --upgrade pip
 
 # Install PyTorch and CUDA dependencies
-RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+RUN pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
 
 # Copy requirements and install
 COPY requirements.txt /workspace/requirements.txt
-RUN pip install -r /workspace/requirements.txt
+RUN pip install xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu121 && \
+    pip install -r /workspace/requirements.txt
 
 # Copy the full project into the image
 COPY . /workspace/Martian-World-Model

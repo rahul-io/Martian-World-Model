@@ -11,7 +11,7 @@ from plyfile import PlyData, PlyElement
 def vggt_run(image_file_names, device="cpu"):
     # bfloat16 is supported on Ampere GPUs (Compute Capability 8.0+) 
     dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
-    model = VGGT.from_pretrained("./vggt/facebook/VGGT-1B").to(device)
+    model = VGGT.from_pretrained("facebook/VGGT-1B").to(device)
     images = load_and_preprocess_images(image_file_names).to(device)
     images = images[None]
 

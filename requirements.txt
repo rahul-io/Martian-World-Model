@@ -41,3 +41,15 @@ wandb
 peft
 decord
 protobuf
+tensorly
+xformers==0.0.28.post3
+kornia
+loguru
+joblib
+omegaconf
+yacs
+PyYAML
+scikit-learn
+pytorch-lightning
+dreifus
+packaging
