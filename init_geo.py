@@ -44,7 +44,7 @@ def main(source_path, model_path, device, image_size, n_views, co_vis_dsp, depth
     scene = Scene(images, [fx, fy])
 
     x1, x2 = [cv2.cvtColor((img * 255).astype(np.uint8), cv2.COLOR_RGB2BGR) for img in scene.imgs]
-    mkpts_0, mkpts_1, valid_matches = gim_run(x1, x2)
+    mkpts_0, mkpts_1, valid_matches = gim_run(x1, x2, model_type="gim_dkm")
     # valid validation
     H0, W0 = images[0]['img'].shape[-2:]
     valid_matches_im0 = (mkpts_0[:, 0] >= 3) & (mkpts_0[:, 0] < int(W0) - 3) & (

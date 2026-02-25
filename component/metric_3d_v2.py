@@ -119,9 +119,11 @@ def metric3d_depth_cal_save(rgb_file, focals, principal_points, org_imgs_shape):
     batch_branch2 = torch.cat(rgbs_branch2, dim=0)
     combined_batch = torch.cat([batch_branch1, batch_branch2], dim=0)
 
+    dtype = torch.bfloat16 if torch.cuda.get_device_capability()[0] >= 8 else torch.float16
     model = torch.hub.load('yvanyin/metric3d', 'metric3d_vit_giant2', pretrain=True, trust_repo=True)
     model.cuda().eval()
-    with torch.no_grad():
+    
+    with torch.no_grad(), torch.amp.autocast(device_type='cuda', dtype=dtype):
         pred_depths_all, _, _ = model.inference({'input': combined_batch})
 
     num_imgs = len(rgb_file)

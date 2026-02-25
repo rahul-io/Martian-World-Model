@@ -12,3 +12,7 @@ __pycache__
 *.log
 *.ckpt
 *.csv
+assets/demo/depth/*
+assets/demo/interp/*
+assets/demo/pose/*
+assets/demo/sparse_2/*

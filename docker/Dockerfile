@@ -1,7 +1,7 @@
-FROM nvidia/cuda:12.1.1-cudnn8-devel-ubuntu22.04
+FROM nvidia/cuda:12.8.1-cudnn-devel-ubuntu22.04
 
-ENV LANG C.UTF-8
-ENV LC_ALL C.UTF-8
+ENV LANG=C.UTF-8
+ENV LC_ALL=C.UTF-8
 ENV DEBIAN_FRONTEND=noninteractive
 
 # Set the working directory
@@ -31,11 +31,11 @@ RUN wget -q https://cmake.org/files/v3.14/cmake-3.14.0-Linux-x86_64.sh -O /tmp/c
 RUN python -m pip install --upgrade pip
 
 # Install PyTorch and CUDA dependencies
-RUN pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
 
 # Copy requirements and install
 COPY requirements.txt /workspace/requirements.txt
-RUN pip install xformers==0.0.28.post3 --index-url https://download.pytorch.org/whl/cu121 && \
+RUN pip install xformers --index-url https://download.pytorch.org/whl/cu128 && \
     pip install -r /workspace/requirements.txt
 
 # Copy the full project into the image
@@ -46,7 +46,8 @@ WORKDIR /workspace/Martian-World-Model
 # Install submodules
 # Set TORCH_CUDA_ARCH_LIST to avoid "IndexError: list index out of range"
 # This targets common NVIDIA GPU architectures (Volta, Turing, Ampere, Ada)
-ENV TORCH_CUDA_ARCH_LIST="7.0 7.5 8.0 8.6 8.9 9.0+PTX"
+ENV TORCH_CUDA_ARCH_LIST="7.0 7.5 8.0 8.6 8.9 9.0 12.0+PTX"
+ENV CUDA_ARCHITECTURES="70;75;80;86;89;90;120"
 RUN pip install submodules/simple-knn --no-build-isolation && \
     pip install submodules/diff-gaussian-rasterization --no-build-isolation && \
     pip install submodules/fused-ssim --no-build-isolation

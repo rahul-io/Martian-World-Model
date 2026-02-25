@@ -18,6 +18,7 @@ docker run \
   --gpus all \
   -e DISPLAY=$DISPLAY \
   -e NVIDIA_DRIVER_CAPABILITIES=all \
+  -e GITHUB_TOKEN=$GITHUB_TOKEN \
   -v /tmp/.X11-unix:/tmp/.X11-unix:rw \
   -v "${PROJECT_ROOT}":/workspace/Martian-World-Model \
   -e QT_X11_NO_MITSHM=1 \

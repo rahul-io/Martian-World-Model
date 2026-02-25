@@ -42,7 +42,7 @@ peft
 decord
 protobuf
 tensorly
-xformers==0.0.28.post3
+xformers
 kornia
 loguru
 joblib
@@ -53,3 +53,6 @@ scikit-learn
 pytorch-lightning
 dreifus
 packaging
+setuptools
+mmengine
+mmcv-lite
