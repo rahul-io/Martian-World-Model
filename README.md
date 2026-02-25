@@ -24,33 +24,30 @@ Martian World Model introduces a comprehensive solution for synthesizing realist
 
 To set up the environment for Martian World Model, follow these steps:
 
+### 1. Download Model Weights
+
+**VGGT-1B**:
 ```bash
-# Create a new conda environment
-conda create -n mars python=3.10.13 cmake=3.14.0 -y
-
-# Activate the environment
-conda activate mars
-
-# Install PyTorch and CUDA dependencies
-conda install pytorch torchvision pytorch-cuda=12.1 -c pytorch -c nvidia
-
-# Install required Python packages
-pip install -r requirements.txt
-
-# Install submodules
-pip install submodules/simple-knn
-pip install submodules/diff-gaussian-rasterization
-pip install submodules/fused-ssim
-
+curl -LsSf https://hf.co/cli/install.sh | bash
+hf download facebook/VGGT-1B --local-dir ./facebook/VGGT-1B
 ```
 
-### Download Image Matching Module Weights
+**GIM**: Download from [Google Drive](https://drive.google.com/file/d/1gk97V4IROnR1Nprq10W9NCFUv2mxXR_-/view?usp=sharing) and place in `gim/weights/`.
 
-To download the GIM weights required for the project, use the following link:
+> **Note:** The Metric3D model (`metric3d_vit_giant2`, ~5 GB) is downloaded automatically via `torch.hub` on first run and cached in `~/.cache/torch/hub/checkpoints/`.
 
-[Google Drive](https://drive.google.com/file/d/1gk97V4IROnR1Nprq10W9NCFUv2mxXR_-/view?usp=sharing)
+### 2. Build and Run Docker Container
 
-After downloading, place the weights in the `gim/weights/` directory.
+```bash
+# Set your GitHub token (required for Metric3D download via torch.hub)
+export GITHUB_TOKEN=ghp_your_token_here
+
+# Build the Docker image
+bash docker/docker_build.sh mars
+
+# Run the container (mounts project directory, passes GITHUB_TOKEN)
+bash docker/docker_run.sh mars
+```
 
 ## Usage
 
